@@ -1,5 +1,9 @@
 /* globals artifacts, contract, it, assert, web3, expect */
 
+const timeTravel = require('./timetravel.js')
+
+const SECONDS_IN_A_DAY = 86400
+
 const BitfexToken = artifacts.require('./BitfexToken.sol')
 const PreICOCrowdsale = artifacts.require('./PreICOCrowdsale.sol')
 
@@ -22,8 +26,8 @@ contract('PreICOCrowdsale general checks', function (accounts) {
     const token = BitfexToken.at(tokenAddress)
 
     const preICOWallet = instance.address
-    const ownersWallet = accounts[2]
-    const bountyWallet = accounts[3]
+    const ownersWallet = accounts[3] // wallet for tokens for owners
+    const bountyWallet = accounts[4] // wallet for bounty tokens
 
     const preICOBalance = await token.balanceOf(preICOWallet)
     const ownersBalance = await token.balanceOf(ownersWallet)
@@ -185,5 +189,27 @@ contract('PreICOCrowdsale softcap checks', function (accounts) {
 
     const newOwnerBalance = await web3.eth.getBalance(accounts[1])
     assert.equal(newOwnerBalance.valueOf(), Number(ownerBalance.valueOf()) + Number(escrowBalance.valueOf()), 'Owner balance not increased')
+  })
+})
+
+contract('PreICOCrowdsale after ICO checks', function (accounts) {
+  it('allow withdraw tokens', async () => {
+    const instance = await PreICOCrowdsale.deployed()
+    const tokenAddress = await instance.token()
+    const token = BitfexToken.at(tokenAddress)
+
+    await sleep(2000)
+
+    web3.eth.sendTransaction({ from: accounts[1], to: instance.address, value: web3.toWei(1, 'ether'), gas: 100000 })
+
+    await timeTravel(SECONDS_IN_A_DAY * 60)
+
+    instance.finalize()
+
+    instance.withdrawTokens({ from: accounts[1] })
+
+    const userBalance = await token.balanceOf(accounts[1])
+
+    assert.equal(userBalance.valueOf(), 909)
   })
 })
