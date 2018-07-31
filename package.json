@@ -1,7 +1,7 @@
 {
-  "name": "ico-bitfex",
+  "name": "bitfex-token",
   "version": "1.0.0",
-  "description": "",
+  "description": "BitFex.Trade pre-ICO and ICO smart contracts",
   "main": "truffle-config.js",
   "directories": {
     "test": "test"
@@ -10,9 +10,9 @@
     "testrpc": "testrpc --account='0x48719125af7cb2bf21456ff45c337d82bd41495c1c53cdeb9370f3c30754575b,5000000000000000000000' --account='0xa9cce691eb3e53e4f878a8ba1c24325ed800c9127a271cbb83b1f471c56f6803,5000000000000000000000' --account='0x66966d5d7056f5429e0588b59f7593d5834f25ad0e2964caabc8c9df18b56dae,5000000000000000000000' --account='0x1bfd0523354b64c3957c6e70e9d105fc3afc54c7f94a0f965c40b9b28b4676ce,5000000000000000000000' --account='0xf27b684510953f5a8e43889fb40c49bb71b603eb733852acd06af8b8d957d15e,5000000000000000000000' --account='0xc8389523c2bd8f8a285cb717dd71c8b5ea89450c29714039987eec1cbfd0014e,5000000000000000000000' --account='0x281501613949deebc837593d8d3266c4ca4c970f16c76625a983e094daccf389,5000000000000000000000' --account='0x81aead415d22e800a6a37e7b1149ce5fbe9629f9b2b6d1f51d8001cb4fee13e3,5000000000000000000000' --account='0x5232961236d2b753c5f367787474c462e6d51ba2d377f410345c0ebe87b5df08,5000000000000000000000' --account='0x420503771facd5dbb290c3acb7c29a86ac50a582968e6d18ed42524a415dbc26,5000000000000000000000'",
     "test": "truffle test"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["erc-20", "token", "smart contracts"],
+  "author": "BitFex.Trade <support@bitfex.trade>",
+  "license": "MIT",
   "dependencies": {
     "openzeppelin-solidity": "^1.11.0"
   }
