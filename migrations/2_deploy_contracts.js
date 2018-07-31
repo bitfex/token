@@ -16,7 +16,7 @@ module.exports = function (deployer, network, accounts) {
   const ICO = {
     openingTime: web3.eth.getBlock('latest').timestamp + 2, // two secs in the future
     // openingTime: 1535760000 // Sat, 01 Sep 2018 00:00:00 UTC +00:00
-    closingTime: 1537487999, // Thu, 20 Sep 2018 23:59:59 UTC +00:00
+    closingTime: 1541030399, // Wed, 31 Oct 2018 23:59:59 UTC +00:00
     price: new web3.BigNumber(web3.toWei(0.65, 'ether')), // ICO rate (1 wei is 10 token-bits)
     goal: new web3.BigNumber(web3.toWei(1000, 'ether')), // ICO soft cap
     hardCap: 3000000 // 30000.00 BITFEX Tokens
