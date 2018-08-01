@@ -23,6 +23,10 @@ contract PostDeliveryCrowdsale is TimedCrowdsale, FinalizableCrowdsale {
     hardCap = _hardCap;
   }
 
+  function balanceOf (address _address) public view returns (uint256) {
+    return balances[_address];
+  }
+
   /**
    * @dev Withdraw tokens only after crowdsale ends and crowdsale is finalized.
    */
